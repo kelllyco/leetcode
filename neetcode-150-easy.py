@@ -116,3 +116,30 @@ class Solution:
                 l = r
             r += 1
         return profit
+    
+
+    def isValid(self, s: str) -> bool:
+        # have a filo stack that's empty
+        # if s[i] is open, push onto stack
+        # if s[i] is closed, pop from stack...if pop doesn't match false
+        # if s[i] is closed while stack is empty...false
+
+        # if s runs out while stuff is still in stack, false
+        stack = []
+        for c in s:
+            if c == "[" or c == "{" or c == "(":
+                stack.append(c)
+            else:
+                if not stack:
+                    return False
+                temp = stack.pop()
+
+                if temp == "[" and c != "]":
+                    return False
+                if temp == "{" and c != "}":
+                    return False
+                if temp == "(" and c != ")":
+                    return False
+        if not stack:
+            return True
+        return False
