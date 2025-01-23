@@ -143,3 +143,33 @@ class Solution:
         if not stack:
             return True
         return False
+    
+
+    def search(self, nums: List[int], target: int) -> int:
+        # binary search attempt for the first time in a year and a half lol
+        # remember lots of dividing by two and midpoint
+        # time is O(logn) which is binary search, space O(1)
+
+        # cant do recursion bc call stack with space
+        # need to do iterative solution
+
+        # so have a while loop
+
+        # have target
+        # have high, low, mid
+
+        high = len(nums)
+        low = 0
+
+        while high > low:
+            mid = ((high - low) // 2) + low
+
+            if nums[mid] == target:
+                return mid
+            elif target > nums[mid]:
+                low = mid + 1
+            else:
+                high = mid
+
+        return -1
+
