@@ -194,4 +194,60 @@ class Solution:
             curr = temp 
         return prev
 
+    def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
         
+        # okay so O(m + n) time and O(1) space
+
+        # should have two ptrs, l1 and l2
+        # point them both at the front of list1 and list2, respectively
+
+        # while l1 or l2
+        # get the vals of l1 and l2 (obvi one could be None)
+        # pick the smaller one, make it output.next and the new tail of output
+
+        # return output
+
+        # my solution is below, worked and met time and space complexity but 
+        # could have been less convoluted...better solution uncommented
+
+        # l1, l2 = list1, list2
+        # head, lstPtr = None, None
+
+        # while l1 or l2:
+        #     temp = None
+        #     if not l1:
+        #         temp = l2
+        #         l2 = l2.next
+        #     elif not l2:
+        #         temp = l1
+        #         l1 = l1.next
+        #     elif l1.val <= l2.val:
+        #         temp = l1
+        #         l1 = l1.next
+        #     else:
+        #         temp = l2 
+        #         l2 = l2.next
+
+        #     if not head:
+        #         head = temp
+        #         lstPtr = head
+        #     else:
+        #         lstPtr.next = temp
+        #         lstPtr = temp
+
+        # return head
+
+        temp = node = ListNode()
+
+        while list1 and list2:
+            if list1.val < list2.val:
+                node.next = list1
+                list1 = list1.next
+            else:
+                node.next = list2
+                list2 = list2.next
+            node = node.next
+
+        node.next = list1 or list2
+
+        return temp.next
