@@ -173,3 +173,25 @@ class Solution:
 
         return -1
 
+    def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+
+        # okay so need O(n) time, O(1) space
+        # aka linear time and in place
+
+        # so basically need to change where next points for everything
+        # going to just rotate through prev, curr, and next
+
+        # originally used temp, but there were weird edge cases i was having
+        # to account for...now using temp based off of soulution provided
+        # my answer was still O(n) and in place tho :)
+        prev = None
+        curr = head
+
+        while curr:
+            temp = curr.next 
+            curr.next = prev 
+            prev = curr 
+            curr = temp 
+        return prev
+
+        
