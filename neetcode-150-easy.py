@@ -251,3 +251,27 @@ class Solution:
         node.next = list1 or list2
 
         return temp.next
+
+    def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
+        # okay so gonna place the root in a queue (fifo)
+
+        # then take the first item in the queue, swap the left and right nodes, then push
+        # both back into the queue, the new left going first
+
+        if not root:
+            return root
+
+        queue = [root]
+
+        while queue:
+            node = queue.pop(0)
+
+            node.left, node.right = node.right, node.left
+
+            if node.left:
+                queue.append(node.left)
+            if node.right:
+                queue.append(node.right)
+        
+        return root
+
