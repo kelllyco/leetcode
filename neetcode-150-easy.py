@@ -275,3 +275,26 @@ class Solution:
         
         return root
 
+    def maxDepth(self, root: Optional[TreeNode]) -> int:
+        # okay so need a level order transversal, since depth is what we care abt
+        # can add None to the queue at the end of each level
+        depth = 0
+        if not root:
+            return 0
+
+        queue = [root]
+        queue.append(None)
+
+        while queue:
+            top = queue.pop(0)
+            if not top:
+                depth += 1
+                if queue:
+                    queue.append(None)
+            else:
+                if top.left:
+                    queue.append(top.left)
+                if top.right:
+                    queue.append(top.right)
+        return depth
+            
