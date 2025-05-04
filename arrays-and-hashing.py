@@ -1,6 +1,10 @@
 # was using blind 75 roadmap, now moving to neetcode 150 easy to hard since have head knowledge,
 # more just need to learn how to think "leetcode"-like
 
+from collections import defaultdict
+from typing import List
+
+
 class Solution:
     def hasDuplicate(self, nums: List[int]) -> bool:
         # hash set solution...
